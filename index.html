@@ -11,108 +11,191 @@
       font-family: 'Roboto', 'Segoe UI', sans-serif;
       margin: 0;
       padding: 0;
-      background-color: #fefefe;
-      color: #2a2a2a;
-      line-height: 1.6;
+      background-color: #6b798a; /* Soft light background */
+      color: #1a1a1a; /* Darker text for better contrast */
+      line-height: 1.5;
     }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
     nav {
       position: fixed;
       top: 0;
       width: 100%;
-      background-color: #333;
+      background-color: #1b263b; /* Dark navy */
       display: flex;
       justify-content: center;
-      padding: 1rem 0;
+      padding: 0.75rem 0;
       z-index: 1000;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      box-shadow: 0 2px 6px rgba(0,0,0,0.15);
     }
+
     nav a {
-      color: #ffffff;
+      color: #e0e6f1; /* Light gray-blue */
       text-decoration: none;
-      margin: 0 1.2rem;
-      font-weight: 500;
-      font-size: 1rem;
-      transition: color 0.3s ease;
+      margin: 0 1rem;
+      font-weight: 600;
+      font-size: 0.95rem;
+      position: relative;
+      transition: color 0.3s ease, transform 0.3s ease;
     }
+
     nav a:hover {
-      color: #f4a261;
+      color: #fca311; /* Warm amber */
+      transform: translateY(-3px); 
     }
+
+    nav a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background-color: #fca311;
+      transform: scaleX(0);
+      transform-origin: bottom right;
+      transition: transform 0.3s ease;
+    }
+
+    nav a:hover::after {
+      transform: scaleX(1);
+      transform-origin: bottom left;
+    }
+
     header {
-      background-color: #444;
-      color: white;
-      padding: 6rem 1rem 2rem;
+      background-color: #14213d; /* Deep navy */
+      color: #f4f4f9; /* Off-white */
+      padding: 5rem 1rem 1.5rem;
       text-align: center;
+      background: url('your-image.jpg') center center no-repeat;
+      background-size: cover;
+      background-attachment: fixed;
     }
+
     header img {
       border-radius: 50%;
-      width: 150px;
-      height: 150px;
-      margin-bottom: 1rem;
-      border: 4px solid white;
+      width: 140px;
+      height: 140px;
+      margin-bottom: 0.75rem;
+      border: 3px solid #fca311;
       object-fit: cover;
     }
-    section {
-      padding: 3rem 1rem;
-      max-width: 900px;
-      margin: auto;
-    }
-    h2 {
-      color: #e76f51;
-      border-bottom: 2px solid #e9c46a;
-      padding-bottom: 0.5rem;
-      margin-bottom: 1rem;
-      font-weight: 700;
-      font-size: 1.8rem;
-    }
-    ul {
-      padding-left: 1.2rem;
-      list-style-type: disc;
-    }
-    .contact {
-      margin-top: 0.5rem;
-      flex-wrap: wrap;
-    }
-    .contact a {
-      color: #f4a261;
+
+    header .contact a {
+      color: #fca311;
       text-decoration: none;
-      margin: 0 0.5rem;
-      font-weight: 500;
+      margin: 0 0.4rem;
+      font-weight: 600;
       display: inline-flex;
       align-items: center;
-      gap: 0.3rem;
+      gap: 0.25rem;
       transition: color 0.3s ease;
     }
-    .contact a:hover {
-      color: #e76f51;
+
+    header .contact a:hover {
+      color: #e85d04;
       text-decoration: underline;
     }
+
+    section {
+      opacity: 0;
+      transform: translateY(15px);
+      transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+      padding: 2rem 1rem;
+      max-width: 850px;
+      margin: 1rem auto;
+      background-color: #ffffff;
+      border-radius: 6px;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.08);
+    }
+
+    section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    h2 {
+      color: #fca311;
+      border-bottom: 2px solid #e5e5e5;
+      padding-bottom: 0.4rem;
+      margin-bottom: 0.8rem;
+      font-weight: 700;
+      font-size: 1.6rem;
+    }
+
+    ul {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      padding: 0;
+    }
+
+    ul li {
+      list-style-type: disc;
+      padding-left: 1.2rem;
+      line-height: 1.6;
+    }
+
     footer {
       text-align: center;
-      padding: 1.5rem;
-      background-color: #eee;
-      color: #444;
-      font-size: 0.9rem;
-      margin-top: 3rem;
+      padding: 1.2rem;
+      background-color: #1b263b;
+      color: #e0e6f1;
+      font-size: 0.85rem;
+      margin-top: 2rem;
+      border-top: 2px solid #fca311;
     }
+
     .icon {
       width: 16px;
       height: 16px;
       fill: currentColor;
     }
+
+    .contact {
+      margin-top: 0.8rem;
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .contact a {
+      color: #fca311;
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.3s ease;
+    }
+
+    .contact a:hover {
+      color: #e85d04;
+    }
+
     @media (max-width: 600px) {
       nav {
         flex-wrap: wrap;
-        padding: 0.5rem 0;
+        padding: 0.4rem 0;
       }
+
       nav a {
-        margin: 0.3rem 0.8rem;
-        font-size: 0.9rem;
+        margin: 0.25rem 0.6rem;
+        font-size: 0.85rem;
       }
+
       section {
-        padding: 2rem 1rem;
+        padding: 1.5rem 1rem;
+        margin: 0.5rem 0.5rem;
       }
+
       h2 {
-        font-size: 1.5rem;
+        font-size: 1.3rem;
+      }
+
+      ul {
+        grid-template-columns: 1fr;
       }
     }
   </style>
@@ -192,32 +275,45 @@
   <section id="certifications">
     <h2>Certifications</h2>
     <ul>
-      <li>AWS Academy Machine Learning Certificate (2023)</li>
-      <li>Machine Learning — EduSkills (2023)</li>
-      <li>Java Programming — Kodnest Technologies (2023)</li>
-      <li>Power BI Essentials — Coursera (Ongoing, 2024)</li>
+      <li>Certified Python Developer - Python Institute (2024)</li>
+      <li>Google Data Analytics Professional Certificate (2024)</li>
     </ul>
   </section>
 
   <section id="positions">
-    <h2>Positions of Responsibility</h2>
+    <h2>Roles & Responsibilities</h2>
     <ul>
-      <li><strong>Team Lead</strong> — Final Year Project (2023 – Present): Led a 3-member team in building an emotion recognition system; managed timelines and documentation.</li>
-      <li><strong>Class Representative</strong> (2021 – 2023): Liaison between faculty and 60+ students; organized seminars and peer coding groups.</li>
+      <li>Develop and deploy machine learning models to solve real-world problems.</li>
+      <li>Analyze data to derive actionable insights and optimize systems.</li>
+      <li>Collaborate with cross-functional teams on multiple projects.</li>
     </ul>
   </section>
 
   <section id="interests">
     <h2>Languages & Interests</h2>
     <ul>
-      <li><strong>Languages:</strong> Telugu (Native), English (Proficient), Hindi (Conversational)</li>
-      <li><strong>Interests:</strong> AI ethics, Productivity tools, Reading non-fiction, Sports analytics, Open-source contribution</li>
+      <li><strong>Languages:</strong> English, Telugu, Hindi</li>
+      <li><strong>Interests:</strong> Sports, Music, Reading</li>
     </ul>
   </section>
 
   <footer>
-    &copy; 2025 Yuvaraj Nagireddi. All rights reserved.
+    <p>© 2025 Yuvaraj Nagireddi. All rights reserved.</p>
   </footer>
+
+  <script>
+    document.addEventListener('scroll', function () {
+      const sections = document.querySelectorAll('section');
+      const windowHeight = window.innerHeight;
+
+      sections.forEach(section => {
+        const sectionTop = section.getBoundingClientRect().top;
+        if (sectionTop < windowHeight - 100) {
+          section.classList.add('visible');
+        }
+      });
+    });
+  </script>
 
 </body>
 </html>
